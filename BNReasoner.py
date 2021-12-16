@@ -12,10 +12,10 @@ class BNReasoner:
             self.bn = BayesNet()
             # Loads the BN from an BIFXML file
             self.bn.load_from_bifxml(net)
-            self.bn.draw_structure()
+            # self.bn.draw_structure()
         else:
             self.bn = net
-
+            print("no args..")
     #1. d separation
     #2. ordering
     #3. network Pruning
@@ -32,3 +32,14 @@ class BNReasoner:
         #•an a-priori marginal query.
         # •a posterior marginal query.
         # •one MAP and one MEP query.
+    def print_metrics(self):
+        #variables of problem (eg ; dog_problem- family-out,? dog-out? etc) :
+        vars =self.bn.get_all_variables()
+        for cpt in vars:
+            print("\n\ncpt of :" + str(cpt))
+            print("\n" + str(self.bn.get_cpt(cpt)))
+    def start(self) :
+        print("S")
+        self.print_metrics()
+bnr = BNReasoner("testing/dog_problem.BIFXML")
+bnr.start()
