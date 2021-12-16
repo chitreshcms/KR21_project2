@@ -12,7 +12,7 @@ class BNReasoner:
             self.bn = BayesNet()
             # Loads the BN from an BIFXML file
             self.bn.load_from_bifxml(net)
+            self.bn.draw_structure()
         else:
             self.bn = net
 
-    # TODO: This is where your methods should go
