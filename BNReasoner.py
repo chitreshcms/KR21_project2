@@ -16,3 +16,19 @@ class BNReasoner:
         else:
             self.bn = net
 
+    #1. d separation
+    #2. ordering
+    #3. network Pruning
+    #4. marginal distribution
+    #5. map and mep
+    #7. PERFORMANCE EVALUATION Show the comparative average performance of your implementation on the aforementioned tasks (MAP,
+            # MPE) with different elimination order heuristics (min-order, min-fill vs. random order compared to one
+            # another) w.r.t. increasing size of variables (growing with 10 more variables or more each time).
+            # 1
+            # by plots e.g., x-axis can time in seconds, while y-axis can be the number of variables.
+            # Hint: You can of course create such big BNs manually, but automatic generation would make your
+            # life much easier. This task will be graded according to the depth and elaboration of the analysis
+    #8. Use case
+        #•an a-priori marginal query.
+        # •a posterior marginal query.
+        # •one MAP and one MEP query.
