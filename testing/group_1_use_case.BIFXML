@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="US-ASCII"?>
 
-<!--Author: Chitresh Sharma
-            Jawad Khalid
-            Niharika Chaubey
-            Eduard Alexa
- -->
-
 <!-- DTD for the XMLBIF 0.3 format -->
 <!DOCTYPE BIF [
 	<!ELEMENT BIF ( NETWORK )*>
@@ -24,42 +18,126 @@
 
 <BIF VERSION="0.3">
 <NETWORK>
-    <NAME>Lecture Example</NAME>
+    <NAME>Usecase</NAME>
 
     <!-- Variables-->
     <VARIABLE TYPE="nature">
-        <NAME>Winter?</NAME>
+        <NAME>no_group_meeting?</NAME>
         <OUTCOME>True</OUTCOME>
         <OUTCOME>False</OUTCOME>
     </VARIABLE>
-    <!-- Add More variables below according to our use case -->
+    <VARIABLE TYPE="nature">
+        <NAME>sudden_emergency?</NAME>
+        <OUTCOME>True</OUTCOME>
+        <OUTCOME>False</OUTCOME>
     </VARIABLE>
+    <VARIABLE TYPE="nature">
+        <NAME>professor_understanding?</NAME>
+        <OUTCOME>True</OUTCOME>
+        <OUTCOME>False</OUTCOME>
+    </VARIABLE>
+    <VARIABLE TYPE="nature">
+        <NAME>stressed?</NAME>
+        <OUTCOME>True</OUTCOME>
+        <OUTCOME>False</OUTCOME>
+    </VARIABLE>
+    <VARIABLE TYPE="nature">
+        <NAME>individual_submission?</NAME>
+        <OUTCOME>True</OUTCOME>
+        <OUTCOME>False</OUTCOME>
+    </VARIABLE>
+    <VARIABLE TYPE="nature">
+        <NAME>all_tasks_completed?</NAME>
+        <OUTCOME>True</OUTCOME>
+        <OUTCOME>False</OUTCOME>
+        <PROPERTY>position = (155, 165)</PROPERTY>
+    </VARIABLE>
+    <VARIABLE TYPE="nature">
+        <NAME>most_lectures_attended?</NAME>
+        <OUTCOME>True</OUTCOME>
+        <OUTCOME>False</OUTCOME>
+    </VARIABLE>
+    <VARIABLE TYPE="nature">
+        <NAME>late_submission?</NAME>
+        <OUTCOME>True</OUTCOME>
+        <OUTCOME>False</OUTCOME>
+    </VARIABLE>
+    <VARIABLE TYPE="nature">
+        <NAME>pass?</NAME>
+        <OUTCOME>True</OUTCOME>
+        <OUTCOME>False</OUTCOME>
+    </VARIABLE>
+    <VARIABLE TYPE="nature">
+        <NAME>project_completed?</NAME>
+        <OUTCOME>True</OUTCOME>
+        <OUTCOME>False</OUTCOME>
+    </VARIABLE>
+
+    <!-- Add More variables below according to our use case -->
 
     <!-- PCTs -->
     <DEFINITION>
-        <FOR>Winter?</FOR>
-        <TABLE>0.4 0.6</TABLE>
+        <FOR>no_group_meeting?</FOR>
+        <TABLE>0.2 0.8</TABLE>
+    </DEFINITION>
+     <DEFINITION>
+        <FOR>sudden_emergency?</FOR>
+        <TABLE>0.05 0.95</TABLE>
+    </DEFINITION>
+     <DEFINITION>
+        <FOR>professor_understanding?</FOR>
+        <TABLE>0.5 0.5</TABLE>
     </DEFINITION>
     <DEFINITION>
-        <FOR>Sprinkler?</FOR>
-        <GIVEN>Winter?</GIVEN>
-        <TABLE>0.25 0.75 0.8 0.2</TABLE>
+        <FOR>most_lectures_attended?</FOR>
+        <GIVEN>professor_understanding?</GIVEN>
+        <GIVEN>no_group_meeting?</GIVEN>
+        <TABLE>0.7 0.3 0.97 0.03 0.10 0.90 0.30 0.70</TABLE>
     </DEFINITION>
     <DEFINITION>
-        <FOR>Rain?</FOR>
-        <GIVEN>Winter?</GIVEN>
-        <TABLE>0.9 0.1 0.2 0.8</TABLE>
+        <FOR>stressed?</FOR>
+        <GIVEN>sudden_emergency?</GIVEN>
+        <GIVEN>all_tasks_completed?</GIVEN>
+        <GIVEN>individual_submission?</GIVEN>
+        <TABLE>0.99 0.01 0.98 0.02 0.60 0.40 0.8 0.2 0.5 0.5 0.75 0.25 0.10 0.90 0.55 0.45</TABLE>
+    </DEFINITION>
+
+    <DEFINITION>
+        <FOR>individual_submission?</FOR>
+        <GIVEN>professor_understanding?</GIVEN>
+        <GIVEN>no_group_meeting?</GIVEN>
+        <TABLE>0.6 0.4 0.40 0.60 0.20 0.80 0.30 0.7</TABLE>
     </DEFINITION>
     <DEFINITION>
-        <FOR>Wet Grass?</FOR>
-        <GIVEN>Rain?</GIVEN>
-        <GIVEN>Sprinkler?</GIVEN>
-        <TABLE>1.0 0.0 0.2 0.8 0.1 0.9 0.05 0.95</TABLE> <!-- Order? Rain?, Sprinkler?, Wet Grass?-->
+        <FOR>project_completed?</FOR>
+        <GIVEN>late_submission?</GIVEN>
+        <GIVEN>most_lectures_attended?</GIVEN>
+        <TABLE>0.95 0.05 0.60 0.40 0.96 0.04 0.8 0.2</TABLE>
     </DEFINITION>
     <DEFINITION>
-        <FOR>Slippery Road?</FOR>
-        <GIVEN>Rain?</GIVEN>
-        <TABLE>1.0 0.0 0.3 0.7</TABLE>
+        <FOR>pass?</FOR>
+        <GIVEN>stressed?</GIVEN>
+        <GIVEN>late_submission?</GIVEN>
+        <TABLE>0.3 0.7 0.95 0.05 0.20 0.80 0.7 0.3</TABLE>
     </DEFINITION>
+    <DEFINITION>
+        <FOR>most_lectures_attended?</FOR>
+        <GIVEN>professor_understanding?</GIVEN>
+        <GIVEN>no_group_meeting?</GIVEN>
+        <TABLE>0.5 0.5 0.95 0.05 0.20 0.80 0.7 0.3</TABLE>
+    </DEFINITION>
+    <DEFINITION>
+        <FOR>all_tasks_completed?</FOR>
+        <GIVEN>professor_understanding?</GIVEN>
+        <GIVEN>no_group_meeting?</GIVEN>
+        <TABLE>0.5 0.5 0.95 0.05 0.20 0.80 0.7 0.3</TABLE>
+    </DEFINITION>
+    <DEFINITION>
+        <FOR>late_submission?</FOR>
+        <GIVEN>all_tasks_completed?</GIVEN>
+        <TABLE>0.20 0.80 0.60 0.40</TABLE>
+    </DEFINITION>
+
+
 </NETWORK>
 </BIF>
